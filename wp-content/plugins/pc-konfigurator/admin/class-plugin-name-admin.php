@@ -96,8 +96,33 @@ class Plugin_Name_Admin {
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/plugin-name-admin.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/plugin-name-admin.js', '', $this->version, true );
 
 	}
+
+    /**
+     * Register a new Admin Menu entry
+     *
+     * @since    1.0.0
+     */
+    public function pc_configurator_menu() {
+        add_menu_page('PC Konfigurator',
+            'PC Konfigurator',
+            'manage_options',
+            'pc-configurator',
+            array($this, 'pc_configurator_admin_page'),
+            'dashicons-tickets',
+            250
+        );
+    }
+
+    /**
+     * Register a new Admin Menu page
+     *
+     * @since    1.0.0
+     */
+    public function pc_configurator_admin_page() {
+        require_once 'partials/plugin-name-admin-display.php';
+    }
 
 }

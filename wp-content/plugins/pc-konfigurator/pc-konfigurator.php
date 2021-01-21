@@ -15,7 +15,7 @@
  * @wordpress-plugin
  * Plugin Name:       WordPress PC Konfigurator
  * Plugin URI:        http://example.com/plugin-name-uri/
- * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
+ * Description:       This is a short description of what the plugin does.
  * Version:           1.0.0
  * Author:            s17738
  * Author URI:        http://example.com/
@@ -62,7 +62,7 @@ register_deactivation_hook( __FILE__, 'deactivate_plugin_name' );
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  */
-require plugin_dir_path( __FILE__ ) . 'includes/class-pc-konfigurator.php';
+require plugin_dir_path( __FILE__ ) . 'includes/class-plugin-name.php';
 
 /**
  * Begins execution of the plugin.

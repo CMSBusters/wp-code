@@ -1,0 +1,44 @@
+{
+  "name": "wordpress-plugin",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "antd": "^4.10.3",
+    "date-fns": "^2.11.0",
+    "immer": "^8.0.0",
+    "react": "^17.0.1",
+    "react-app-polyfill": "^2.0.0",
+    "react-dom": "^17.0.1",
+    "react-scripts": "4.0.1",
+    "use-immer": "^0.4.2",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.11.9",
+    "@testing-library/react": "^11.2.3",
+    "@testing-library/react-hooks": "^5.0.0",
+    "@testing-library/user-event": "^12.6.0",
+    "archiver": "^3.1.1",
+    "eslint": "^7.18.0",
+    "eslint-plugin-react": "^7.22.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "rewire": "^5.0.0"
+  },
+  "scripts": {
+    "start": "node ./scripts/start-non-split.js",
+    "build": "node ./scripts/build-non-split.js",
+    "preexport": "npm run build",
+    "export": "node ./scripts/export.js",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
