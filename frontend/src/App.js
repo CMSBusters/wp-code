@@ -10,12 +10,12 @@ import {stateReducer} from './utils/functions/stateReducer.js';
 
 import {FORM_COLUMNS} from './utils/constants/FORM_COLUMNS';
 
-export const TodoContext = createContext();
+export const AppContext = createContext();
 
 const App = () => {
     const [todos, dispatchTodos] = useImmerReducer(stateReducer, []);
     return (
-        <TodoContext.Provider value={[todos, dispatchTodos]}>
+        <AppContext.Provider value={[todos, dispatchTodos]}>
             <Row type="flex" justify="center">
                 <Col xs={24} sm={24} md={24} lg={12} xl={12}>
                     <Table dataSource={todos} columns={FORM_COLUMNS}/>
@@ -26,7 +26,7 @@ const App = () => {
                     <AddTodoForm/>
                 </Col>
             </Row>
-        </TodoContext.Provider>
+        </AppContext.Provider>
     );
 };
 

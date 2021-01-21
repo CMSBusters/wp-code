@@ -1,10 +1,10 @@
 import React, {useContext} from 'react';
-import {TodoContext} from '../../App';
+import {AppContext} from '../../App';
 
 import {Popconfirm, Button} from 'antd';
 
 export const Delete = ({record}) => {
-    const [, dispatchTodos] = useContext(TodoContext);
+    const [, dispatchTodos] = useContext(AppContext);
 
     return (
         <Popconfirm title="Czy na pewno usunąć?"

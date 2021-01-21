@@ -3,13 +3,13 @@ import {Button, Form, Row, Typography} from 'antd';
 
 import {FormInput} from './FormInput.component';
 
-import {TodoContext} from '../../App';
+import {AppContext} from '../../App';
 
 const {Title} = Typography;
 
 export const AddTodoForm = () => {
     const [form, setForm] = useState();
-    const [, dispatchTodos] = useContext(TodoContext);
+    const [, dispatchTodos] = useContext(AppContext);
     const addEnabled = form && form.length >= 1;
 
     const formSubmit = () => {
