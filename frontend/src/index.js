@@ -5,7 +5,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 
-const container = document.getElementById('pc_configurer_page');
-if (container) {
-    ReactDOM.render(<App />, container);
-}
+// prod
+// const container = document.getElementById('pc_configurer_page');
+// if (container) {
+//     ReactDOM.render(<App />, container);
+// }
+
+// dev
+ReactDOM.render(<App />, document.getElementById('root'));
