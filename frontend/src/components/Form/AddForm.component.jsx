@@ -13,7 +13,7 @@ export const AddTodoForm = () => {
     const addEnabled = form && form.length >= 1;
 
     const formSubmit = () => {
-        dispatchTodos({type: 'ADD_TODO', payload: [form]});
+        dispatchTodos({type: 'ADD_ITEM', payload: [form]});
     };
 
     return (

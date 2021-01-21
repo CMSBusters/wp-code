@@ -1,24 +1,17 @@
-import React, { useContext } from 'react';
-import { TodoContext } from '../../App';
+import React, {useContext} from 'react';
+import {TodoContext} from '../../App';
 
-import { Popconfirm, Button } from 'antd';
+import {Popconfirm, Button} from 'antd';
 
-export const Delete = ({ record }) => {
-  const [, dispatchTodos] = useContext(TodoContext);
+export const Delete = ({record}) => {
+    const [, dispatchTodos] = useContext(TodoContext);
 
-  return (
-    <Popconfirm
-      title="Are you sure you want to delete?"
-      onConfirm={() => {
-        dispatchTodos({
-          type: 'DELETE_TODO',
-          payload: record.key,
-        });
-      }}
-    >
-      <Button type="primary" danger>
-        Delete
-      </Button>
-    </Popconfirm>
-  );
+    return (
+        <Popconfirm title="Czy na pewno usunąć?"
+                    onConfirm={() => {
+                        dispatchTodos({type: 'DELETE_ITEM', payload: record.key,});
+                    }}>
+            <Button type="primary" danger>Usuń</Button>
+        </Popconfirm>
+    );
 };
