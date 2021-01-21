@@ -1,6 +1,3 @@
-div[name='todotext'] {
-    margin-bottom: 0;
-}
 
 .App {
     margin-top: 25px;
@@ -21,15 +18,10 @@ span[role='img'] {
     color: red;
 }
 
-.true {
-    text-decoration: line-through;
-}
-
 .hideaction {
     display: none;
 }
 
-.CalendarLabel,
 .TitleLength {
     margin-left: 30px;
 }

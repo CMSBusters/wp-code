@@ -7,13 +7,13 @@ import {AppContext} from '../../App';
 
 const {Title} = Typography;
 
-export const AddTodoForm = () => {
+export const AddForm = () => {
     const [form, setForm] = useState();
-    const [, dispatchTodos] = useContext(AppContext);
+    const [, dispatchItems] = useContext(AppContext);
     const addEnabled = form && form.length >= 1;
 
     const formSubmit = () => {
-        dispatchTodos({type: 'ADD_ITEM', payload: [form]});
+        dispatchItems({type: 'ADD_ITEM', payload: [form]});
     };
 
     return (

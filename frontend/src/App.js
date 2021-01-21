@@ -5,25 +5,25 @@ import {Table, Row, Col} from 'antd';
 import 'antd/dist/antd.css';
 import './App.css';
 
-import {AddTodoForm} from './components/Form/AddForm.component';
-import {stateReducer} from './utils/functions/stateReducer.js';
+import {AddForm} from './components/Form/AddForm.component';
+import {stateReducer} from './functions/stateReducer.js';
 
-import {FORM_COLUMNS} from './utils/constants/FORM_COLUMNS';
+import {FORM_COLUMNS} from './constants/FORM_COLUMNS';
 
 export const AppContext = createContext();
 
 const App = () => {
-    const [todos, dispatchTodos] = useImmerReducer(stateReducer, []);
+    const [items, dispatchItems] = useImmerReducer(stateReducer, []);
     return (
-        <AppContext.Provider value={[todos, dispatchTodos]}>
-            <Row type="flex" justify="center">
-                <Col xs={24} sm={24} md={24} lg={12} xl={12}>
-                    <Table dataSource={todos} columns={FORM_COLUMNS}/>
+        <AppContext.Provider value={[items, dispatchItems]}>
+            <Row type="flex" justify="left">
+                <Col xs={24} sm={24} md={24} lg={12} xl={16}>
+                    <Table dataSource={items} columns={FORM_COLUMNS}/>
                 </Col>
             </Row>
-            <Row type="flex" justify="center">
-                <Col xs={24} sm={24} md={24} lg={12} xl={12}>
-                    <AddTodoForm/>
+            <Row type="flex" justify="left">
+                <Col xs={24} sm={24} md={24} lg={12} xl={16}>
+                    <AddForm/>
                 </Col>
             </Row>
         </AppContext.Provider>

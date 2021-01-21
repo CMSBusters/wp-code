@@ -1,7 +1,7 @@
 import React from 'react';
 
-import {Delete} from '../../components/Delete/Delete.component';
-import {Title} from '../../components/Title/Title.component';
+import {Delete} from '../components/Delete/Delete.component';
+import {Title} from '../components/Title/Title.component';
 
 export const FORM_COLUMNS = [
     {
