@@ -6,10 +6,9 @@ import {getProductsApiCall} from "../../api/ProductsApi";
 
 const {Title} = Typography;
 
-export const AddForm = () => {
+export const AddComponentForm = () => {
     const [form, setForm] = useState();
     const [, dispatchItems] = useContext(AppContext);
-    const addEnabled = form && form.length >= 1;
 
     const formSubmit = () => {
         dispatchItems({type: 'ADD_ITEM', payload: [form]});
@@ -20,10 +19,10 @@ export const AddForm = () => {
             <Form onFinish={formSubmit}>
                 <Title level={4}>Wybierz komponent</Title>
                 <Row type="flex" justify="center">
-                    <Complete/>
+                    <Complete setForm={setForm}/>
                 </Row>
                 <Row>
-                    <Button type="primary" htmlType="submit" block disabled={!addEnabled}>Dodaj do zestawu</Button>
+                    <Button type="primary" htmlType="submit" block>Dodaj do zestawu</Button>
                 </Row>
             </Form>
         </>
@@ -34,11 +33,16 @@ export const AddForm = () => {
 class Complete extends React.Component {
     constructor(props) {
         super(props)
+        this.handleChange = this.handleChange.bind(this);
         this.state = {
             error: null,
             isLoaded: false,
-            products: []
+            products: [],
         }
+    }
+
+    handleChange(value) {
+        this.props.setForm(value);
     }
 
     fetchList = () => {
@@ -66,24 +70,25 @@ class Complete extends React.Component {
 
     mapProduct = function (val) {
         return {
-            key: val.slug,
-            value: val.name
+            // key: val.id + '-' + val.slug,
+            label: val.id + '. ' + val.name,
+            value: val.id + '. ' + val.name,
         };
-    }
+    };
 
     render() {
         return (
             <AutoComplete
-                style={{width: 450,}}
+                style={{width: 450}}
+                allowClear={true}
+                autoFocus={true}
+                placeholder='Wpisz nazwę...'
                 options={this.state.products.map(this.mapProduct)}
                 filterOption={(inputValue, option) =>
                     option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
                 }
-                // onSelect={e => {
-                //     setForm(e.target.value);
-                // }}
-            >
-            </AutoComplete>
+                onSelect={value => this.handleChange(value)}
+            />
         )
     }
 }

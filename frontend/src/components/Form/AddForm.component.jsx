@@ -9,22 +9,19 @@ const {Title} = Typography;
 
 export const AddForm = () => {
     const [form, setForm] = useState();
-    const [, dispatchItems] = useContext(AppContext);
-    const addEnabled = form && form.length >= 1;
+    // const [, dispatchItems] = useContext(AppContext);
+    // const addEnabled = form && form.length >= 1;
 
     const formSubmit = () => {
-        dispatchItems({type: 'ADD_ITEM', payload: [form]});
+        // dispatchItems({type: 'ADD_ITEM', payload: [form]});
     };
 
     return (
         <>
             <Form onFinish={formSubmit}>
-                <Title level={4}>Wybierz komponent</Title>
+                <Title level={4}>Nazwa zestawu</Title>
                 <Row type="flex" justify="center">
                     <FormInput setForm={setForm}/>
-                </Row>
-                <Row>
-                    <Button type="primary" htmlType="submit" block disabled={!addEnabled}>Dodaj do zestawu</Button>
                 </Row>
             </Form>
         </>

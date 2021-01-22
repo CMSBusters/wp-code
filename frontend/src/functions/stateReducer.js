@@ -12,6 +12,8 @@ export function stateReducer(state, action) {
         case 'DELETE_ITEM':
             openNotification('bottomLeft', 'Skasowano!');
             return state.filter((item) => item.key !== action.payload);
+        case 'DELETE_ITEMS':
+            return state.filter((item) => item.key !== action.payload);
         default:
             openNotification('bottomLeft', 'Wystąpił błąd!');
             throw new Error();
