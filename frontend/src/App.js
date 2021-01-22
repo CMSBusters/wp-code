@@ -5,7 +5,8 @@ import {Table, Row, Col} from 'antd';
 import 'antd/dist/antd.css';
 import './App.css';
 
-import {AddForm} from './components/Form/AddForm.component';
+// import {AddForm} from './components/Form/AddForm.component';
+import {AddForm} from './components/Form/AddAutoCompleteForm.component';
 import {stateReducer} from './functions/stateReducer.js';
 
 import {FORM_COLUMNS} from './constants/FORM_COLUMNS';
