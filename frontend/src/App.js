@@ -20,6 +20,7 @@ const App = () => {
 
     return (
         <AppContext.Provider value={[items, dispatchItems]}>
+            <Divider/>
             <Row type="flex" justify="center">
                 <Col xs={24} sm={24} md={24} lg={12} xl={16}>
                     <AddComponentForm/>

@@ -8,19 +8,22 @@ const {Title} = Typography;
 
 export const AddComponentForm = () => {
     const [form, setForm] = useState();
+    const [formControl] = Form.useForm();
     const [, dispatchItems] = useContext(AppContext);
 
     const formSubmit = () => {
         dispatchItems({type: 'ADD_ITEM', payload: [form]});
-        setForm("");
+        formControl.resetFields();
     };
 
     return (
         <>
-            <Form onFinish={formSubmit}>
+            <Form form={formControl} onFinish={formSubmit}>
                 <Title level={4}>Wybierz komponent</Title>
                 <Row type="flex" justify="center">
-                    <Complete setForm={setForm}/>
+                    <Form.Item name="compnent">
+                        <Complete setForm={setForm}/>
+                    </Form.Item>
                 </Row>
                 <Row type="flex" justify="center">
                     <Col xs={24} sm={24} md={24} lg={12} xl={12}>
