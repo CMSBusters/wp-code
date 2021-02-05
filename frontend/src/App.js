@@ -1,6 +1,6 @@
 import React, {createContext} from 'react';
 import {useImmerReducer} from 'use-immer';
-import {Table, Row, Col, Divider} from 'antd';
+import {Table, Row, Col, Divider, Typography } from 'antd';
 
 import 'antd/dist/antd.css';
 import './App.css';
@@ -11,6 +11,7 @@ import {stateReducer} from './functions/stateReducer.js';
 import {FORM_COLUMNS} from './constants/FORM_COLUMNS';
 import {AddProduct} from "./components/ProductAdd.component";
 
+const { Text } = Typography;
 export const AppContext = createContext();
 
 const initialState = [];
@@ -29,7 +30,27 @@ const App = () => {
             <Divider/>
             <Row type="flex" justify="center">
                 <Col xs={24} sm={24} md={24} lg={12} xl={16}>
-                    <Table dataSource={items} columns={FORM_COLUMNS}/>
+                    <Table dataSource={items}
+                           columns={FORM_COLUMNS}
+                           summary={pageData => {
+                               let totalPrice = 0;
+
+                               pageData.forEach(({price}) => {
+                                   totalPrice += parseInt(price);
+                               });
+
+                               return (
+                                   <>
+                                       <Table.Summary.Row>
+                                           <Table.Summary.Cell>Suma</Table.Summary.Cell>
+                                           <Table.Summary.Cell>
+                                               <Text type="primary">{totalPrice}</Text>
+                                           </Table.Summary.Cell>
+                                       </Table.Summary.Row>
+                                   </>
+                               );
+                           }}
+                    />
                 </Col>
             </Row>
             <Divider/>

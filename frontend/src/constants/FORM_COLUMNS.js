@@ -8,7 +8,14 @@ export const FORM_COLUMNS = [
         title: 'Nazwa komponentu',
         dataIndex: 'title',
         key: 'title',
-        onFilter: (_, record) => record.completed === 'false',
+        render: (text, record) => {
+            return <Title record={record}>{text}</Title>;
+        },
+    },
+    {
+        title: 'Cena',
+        dataIndex: 'price',
+        key: 'price',
         render: (text, record) => {
             return <Title record={record}>{text}</Title>;
         },

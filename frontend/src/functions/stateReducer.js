@@ -2,7 +2,7 @@ import {v4 as uuidv4} from 'uuid';
 import {openNotification} from './openNotification';
 
 export function stateReducer(state, action) {
-    const [title] = action.payload || '';
+    const [title, price] = action.payload || '';
 
     switch (action.type) {
         case "CLEAR_LIST":
@@ -10,7 +10,7 @@ export function stateReducer(state, action) {
             return [];
         case 'ADD_ITEM':
             openNotification('bottomRight', 'Zapisano!');
-            state.push({title, key: uuidv4()});
+            state.push({title, price, key: uuidv4()});
             break;
         case 'DELETE_ITEM':
             openNotification('bottomRight', 'Skasowano!');

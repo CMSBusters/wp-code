@@ -8,11 +8,12 @@ const {Title} = Typography;
 
 export const AddComponentForm = () => {
     const [form, setForm] = useState();
+    const [price, setPrice] = useState();
     const [formControl] = Form.useForm();
     const [, dispatchItems] = useContext(AppContext);
 
     const formSubmit = () => {
-        dispatchItems({type: 'ADD_ITEM', payload: [form]});
+        dispatchItems({type: 'ADD_ITEM', payload: [form, price]});
         formControl.resetFields();
     };
 
@@ -22,7 +23,7 @@ export const AddComponentForm = () => {
                 <Title level={4}>Wybierz komponent</Title>
                 <Row type="flex" justify="center">
                     <Form.Item name="compnent">
-                        <Complete setForm={setForm}/>
+                        <Complete setForm={setForm} setPrice={setPrice}/>
                     </Form.Item>
                 </Row>
                 <Row type="flex" justify="center">
@@ -49,6 +50,14 @@ class Complete extends React.Component {
 
     handleChange(value) {
         this.props.setForm(value);
+        const regexp = /wartość: (?<price>.+) z/gm;
+        // const match = value.match(regexp);
+        let match = regexp.exec(value);
+        do {
+            // console.log(`Hello ${match.groups.price}`);
+            this.props.setPrice(parseInt(match.groups.price));
+        } while((match = regexp.exec(value)) !== null);
+        // this.props.setPrice(match.groups.price);
     }
 
     fetchList = () => {
@@ -76,9 +85,8 @@ class Complete extends React.Component {
 
     mapProduct = function (val) {
         return {
-            // key: val.id + '-' + val.slug,
-            label: val.id + '. ' + val.name,
-            value: val.id + '. ' + val.name,
+            label: val.id + '. ' + val.name + ' - wartość: ' + val.price + ' zł',
+            value: val.id + '. ' + val.name + ' - wartość: ' + val.price + ' zł',
         };
     };
 
