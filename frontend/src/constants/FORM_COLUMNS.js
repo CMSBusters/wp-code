@@ -15,10 +15,8 @@ export const FORM_COLUMNS = [
     {
         title: 'Cena',
         dataIndex: 'price',
-        key: 'price',
-        render: (text, record) => {
-            return <Title record={record}>{text}</Title>;
-        },
+        className: 'column-money',
+        key: 'price'
     },
     {
         title: 'Akcja',

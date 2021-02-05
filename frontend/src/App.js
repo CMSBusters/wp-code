@@ -1,6 +1,6 @@
 import React, {createContext} from 'react';
 import {useImmerReducer} from 'use-immer';
-import {Table, Row, Col, Divider, Typography } from 'antd';
+import {Table, Row, Col, Divider, Typography} from 'antd';
 
 import 'antd/dist/antd.css';
 import './App.css';
@@ -11,7 +11,7 @@ import {stateReducer} from './functions/stateReducer.js';
 import {FORM_COLUMNS} from './constants/FORM_COLUMNS';
 import {AddProduct} from "./components/ProductAdd.component";
 
-const { Text } = Typography;
+const {Text} = Typography;
 export const AppContext = createContext();
 
 const initialState = [];
@@ -44,7 +44,7 @@ const App = () => {
                                        <Table.Summary.Row>
                                            <Table.Summary.Cell>Suma</Table.Summary.Cell>
                                            <Table.Summary.Cell>
-                                               <Text type="primary">{totalPrice}</Text>
+                                               <Text type="primary">{totalPrice} zł</Text>
                                            </Table.Summary.Cell>
                                        </Table.Summary.Row>
                                    </>

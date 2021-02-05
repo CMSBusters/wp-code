@@ -1,6 +1,6 @@
 import React, {useContext, useState} from "react";
 import {createProductApiCall} from "../api/ProductsApi";
-import {Button, Col, Form, Input, InputNumber, Row} from "antd";
+import {Button, Col, Form, Input, Row} from "antd";
 import {AppContext} from "../App";
 import {Title} from "./Title/Title.component";
 import {TagsOutlined} from "@ant-design/icons";
@@ -8,7 +8,6 @@ import {TagsOutlined} from "@ant-design/icons";
 export const AddProduct = () => {
     const [items, dispatchItems] = useContext(AppContext);
     const [name, setName] = useState('');
-    const [price, setPrice] = useState('');
     const [form] = Form.useForm();
     const [, setState] = useState({
         isLoaded: false,
@@ -39,14 +38,10 @@ export const AddProduct = () => {
             );
     }
 
-    // const setDiscount = (value) => {
-    //     let discountAmount = price * value;
-    //     setPrice(discountAmount);
-    // };
-
     const formSubmit = () => {
         let desc = items.reduce((acc, curVal) => `${acc} ${curVal.title},`, '');
-        createProduct(name, desc, price);
+        let totalPrice = items.reduce(function (acc, obj) { return acc + parseInt(obj.price); }, 0);
+        createProduct(name, desc, totalPrice);
     };
 
     return (
@@ -55,7 +50,8 @@ export const AddProduct = () => {
                 <Title level={4}>Zestaw</Title>
                 <Row type="flex" justify="center">
                     <Col xs={24} sm={24} md={24} lg={12} xl={12}>
-                        <Form.Item label="Nazwa" name="name" rules={[{required: true, message: 'Wpisz nazwę zestawu!'}]}>
+                        <Form.Item label="Nazwa" name="name"
+                                   rules={[{required: true, message: 'Wpisz nazwę zestawu!'}]}>
                             <Input
                                 prefix={
                                     <TagsOutlined/> // Icon
@@ -65,29 +61,6 @@ export const AddProduct = () => {
                                 }}
                             />
                         </Form.Item>
-                    </Col>
-                </Row>
-                <Row type="flex" justify="center">
-                    <Col xs={24} sm={24} md={24} lg={12} xl={12}>
-                        <Form.Item label="Cena zestawu" name="price" rules={[{required: true, message: 'Wpisz cenę zestawu!'}]}>
-                            <InputNumber
-                                suffix="PLN"
-                                min={1}
-                                formatter={value => `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                                parser={value => value.replace(/\$\s?|(,*)/g, '')}
-                                onChange={setPrice}
-                            />
-                        </Form.Item>
-                        {/*<Form.Item label="Rabat" name="discount">*/}
-                        {/*    <InputNumber*/}
-                        {/*        defaultValue={0}*/}
-                        {/*        min={0}*/}
-                        {/*        max={100}*/}
-                        {/*        formatter={value => `${value}%`}*/}
-                        {/*        parser={value => value.replace('%', '')}*/}
-                        {/*        onChange={setDiscount}*/}
-                        {/*    />*/}
-                        {/*</Form.Item>*/}
                     </Col>
                 </Row>
                 <Row type="flex" justify="center">

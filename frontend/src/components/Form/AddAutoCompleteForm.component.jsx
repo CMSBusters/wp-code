@@ -51,13 +51,10 @@ class Complete extends React.Component {
     handleChange(value) {
         this.props.setForm(value);
         const regexp = /wartość: (?<price>.+) z/gm;
-        // const match = value.match(regexp);
         let match = regexp.exec(value);
         do {
-            // console.log(`Hello ${match.groups.price}`);
-            this.props.setPrice(parseInt(match.groups.price));
+            this.props.setPrice(parseInt(match.groups.price) + ' zł');
         } while((match = regexp.exec(value)) !== null);
-        // this.props.setPrice(match.groups.price);
     }
 
     fetchList = () => {
