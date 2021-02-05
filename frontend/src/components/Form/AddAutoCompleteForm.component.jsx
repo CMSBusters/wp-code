@@ -1,5 +1,5 @@
 import React, {useState, useContext} from 'react';
-import {Button, Form, Row, Typography, AutoComplete} from 'antd';
+import {Button, Form, Row, Typography, AutoComplete, Col} from 'antd';
 
 import {AppContext} from '../../App';
 import {getProductsApiCall} from "../../api/ProductsApi";
@@ -12,6 +12,7 @@ export const AddComponentForm = () => {
 
     const formSubmit = () => {
         dispatchItems({type: 'ADD_ITEM', payload: [form]});
+        setForm("");
     };
 
     return (
@@ -21,8 +22,10 @@ export const AddComponentForm = () => {
                 <Row type="flex" justify="center">
                     <Complete setForm={setForm}/>
                 </Row>
-                <Row>
-                    <Button type="primary" htmlType="submit" block>Dodaj do zestawu</Button>
+                <Row type="flex" justify="center">
+                    <Col xs={24} sm={24} md={24} lg={12} xl={12}>
+                        <Button type="primary" htmlType="submit" block>Dodaj do zestawu</Button>
+                    </Col>
                 </Row>
             </Form>
         </>

@@ -6,7 +6,6 @@ import 'antd/dist/antd.css';
 import './App.css';
 
 import {AddComponentForm} from './components/Form/AddAutoCompleteForm.component';
-import {AddForm} from './components/Form/AddForm.component';
 import {stateReducer} from './functions/stateReducer.js';
 
 import {FORM_COLUMNS} from './constants/FORM_COLUMNS';
@@ -21,23 +20,19 @@ const App = () => {
 
     return (
         <AppContext.Provider value={[items, dispatchItems]}>
-            <Row type="flex" justify="left">
+            <Row type="flex" justify="center">
                 <Col xs={24} sm={24} md={24} lg={12} xl={16}>
                     <AddComponentForm/>
                 </Col>
             </Row>
-            <Row type="flex" justify="left">
+            <Divider/>
+            <Row type="flex" justify="center">
                 <Col xs={24} sm={24} md={24} lg={12} xl={16}>
                     <Table dataSource={items} columns={FORM_COLUMNS}/>
                 </Col>
             </Row>
             <Divider/>
-            <Row type="flex" justify="left">
-                <Col xs={24} sm={24} md={24} lg={12} xl={16}>
-                    <AddForm/>
-                </Col>
-            </Row>
-            <Row type="flex" justify="left">
+            <Row type="flex" justify="center">
                 <Col xs={24} sm={24} md={24} lg={12} xl={16}>
                     <AddProduct/>
                 </Col>
