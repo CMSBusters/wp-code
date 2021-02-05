@@ -8,3 +8,25 @@ export function getProductsApiCall() {
         headers: new Headers({'Authorization': auth})
     });
 }
+
+export function createProductApiCall(name, desc) {
+    const product = {
+        name: name,
+        type: "simple",
+        regular_price: "21.99",
+        description: desc,
+        short_description: "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.",
+        categories: [{id: 76}],
+        images: [{src: "https://cms.gierwatowski.pl/blog/wp-content/uploads/2021/01/001.jpgFA7C74F9-9769-4697-977E-9798EC170A58Large.jpg"}]
+    };
+
+    return fetch(baseUrl + '/products', {
+        method: 'POST',
+        headers: {
+            'Authorization': auth,
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(product)
+    })
+}
